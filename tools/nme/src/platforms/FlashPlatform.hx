@@ -484,6 +484,16 @@ class FlashHelper
 
          if (inAsset.data != null) 
          {
+			#if (haxe < "4.1.0")
+            if (Std.is(inAsset.data, Bytes)) 
+            {
+               bytes = cast inAsset.data;
+            }
+            else
+            {
+               bytes = Bytes.ofString(Std.string(inAsset.data));
+            }
+			#else		  
             if (Std.isOfType(inAsset.data, Bytes)) 
             {
                bytes = cast inAsset.data;
@@ -492,6 +502,7 @@ class FlashHelper
             {
                bytes = Bytes.ofString(Std.string(inAsset.data));
             }
+			#end
          }
 
          if (bytes == null) 

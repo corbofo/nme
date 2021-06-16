@@ -21,10 +21,17 @@ class FileHelper
       }
       else
       {
+		  #if (haxe < "4.1.0")
+         if (Std.is(asset.data, Bytes)) 
+            File.saveBytes(destination, cast asset.data);
+         else
+            File.saveContent(destination, Std.string(asset.data));		  
+		  #else
          if (Std.isOfType(asset.data, Bytes)) 
             File.saveBytes(destination, cast asset.data);
          else
             File.saveContent(destination, Std.string(asset.data));
+		#end
       }
    }
 
@@ -37,10 +44,17 @@ class FileHelper
       }
       else
       {
+		  #if (haxe < "4.1.0")
+         if (Std.is(asset.data, Bytes)) 
+            File.saveBytes(destination, cast asset.data);
+         else
+            File.saveContent(destination, Std.string(asset.data));
+		  #else
          if (Std.isOfType(asset.data, Bytes)) 
             File.saveBytes(destination, cast asset.data);
          else
             File.saveContent(destination, Std.string(asset.data));
+		  #end
       }
    }
 

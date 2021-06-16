@@ -1057,6 +1057,12 @@ class NMEProject
             context.KEY_STORE_ALIAS_PASSWORD = certificate.aliasPassword;
          else if (certificate.password != null) 
             context.KEY_STORE_ALIAS_PASSWORD = certificate.password;
+         if (context.KEY_STORE_PASSWORD != null) {
+            context.KEY_STORE_PASSWORD = context.KEY_STORE_PASSWORD.split("$").join("\\$");
+         }
+         if (context.KEY_STORE_ALIAS_PASSWORD != null) {
+            context.KEY_STORE_ALIAS_PASSWORD = context.KEY_STORE_ALIAS_PASSWORD.split("$").join("\\$");
+         }
       }
       return context;
    }

@@ -35,7 +35,7 @@ android {
            storeFile file("::KEY_STORE::")
            storePassword "::KEY_STORE_PASSWORD::"
            keyAlias "::KEY_STORE_ALIAS::"
-           keyPassword "::KEY_STORE_PASSWORD::"
+           keyPassword "::KEY_STORE_ALIAS_PASSWORD::"
        }
     }
     ::end::
