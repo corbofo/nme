@@ -53,6 +53,34 @@ class IconHelper
       return false;
    }
 
+   public static function removeAlphaIfAny(icons:Array<Icon>, width:Int, height:Int, targetPath:String) : Bool {
+      try
+      {
+         var bitmapData = getIconBitmap(icons, width, height);
+         if (bitmapData != null) 
+         {
+			if (bitmapData.transparent) {
+				return true;
+			}
+			var data = new BitmapData(width, height, false);
+			for (y in 0...height) {
+			   for (x in 0...width) {
+				  data.setPixel(x, y, bitmapData.getPixel(x, y));
+			   }
+			}
+			
+            File.saveBytes(targetPath, data.encode("png"));
+			
+            return true;
+         }
+      }
+      catch(e:Dynamic)
+      {
+         Log.error("Could not remove icon's alpha " + targetPath + " : " + e);
+      }
+	  return false;
+   }
+   
    public static function getSvgIcon(icons:Array<Icon>) : String
    {
       // Last in, best dressed
