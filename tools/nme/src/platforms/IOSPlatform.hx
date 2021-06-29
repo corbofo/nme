@@ -497,7 +497,10 @@ ${hxcpp_include}';
 
       var ok = true;
       if (!FileSystem.exists(dest))
-         ok = IconHelper.createIcon(project.icons, size,size, dest);
+         ok = IconHelper.createIcon(project.icons, size, size, dest);
+	  if (size == 1024) {
+		 ok = IconHelper.removeAlphaIfAny(project.icons, size, size, dest);
+	  }
       if (ok)
          return ", \"filename\":\"" + name + "\"";
       else
