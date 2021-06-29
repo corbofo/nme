@@ -35,6 +35,8 @@
 	<string>::APP_VERSION::</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>We don't use camera at all.</string>
 	<key>UIStatusBarHidden</key>
 	<::WIN_FULLSCREEN::/>
 	<key>UIRequiresFullScreen</key>
